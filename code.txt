@@ -1,0 +1,1115 @@
+Practical No. 01 (Introduction to Dart Programming)
+
+helloworld
+void main(){
+   print("Hello!World");
+}
+
+01.) addition
+
+import 'dart:io';
+
+void main(){
+    int a,b,c;
+    print("Enter the number:");
+    a = int.parse (stdin.readLineSync()!);
+    print("Enter the number:");
+    b = int.parse (stdin.readLineSync()!);
+    c = a+b;
+    print("Addition of 2 number is $c");
+  }
+
+Output :
+Enter the number:
+3
+Enter the number:
+5
+Addition of 2 number is 8
+
+02.) greatest
+
+import 'dart:io';
+
+void main(){
+  int a,b,c;
+  print("Enter value of a:");
+  a = int.parse(stdin.readLineSync()!);
+  print("Enter value of b:");
+  b = int.parse(stdin.readLineSync()!);
+  print("Enter value of c:");
+  c = int.parse(stdin.readLineSync()!);
+  if (a>= b){
+    print("a is greater:");
+  }
+  else if (b>= c){
+    print("b is greater:");
+  }
+  else 
+    print("c is greater:");
+  }
+
+Output :
+Enter value of a:
+5
+Enter value of b:
+9
+Enter value of c:
+2
+b is greater:
+
+
+03.) factorial
+
+import 'dart:io';
+
+void main(){
+  int n, f= 1;
+  print("Enter a number:");
+  n = int.parse(stdin.readLineSync()!);
+  while (n>= 1){
+  f= f*n;
+  n--;
+  }
+print("factorial of a number is $f");
+}
+
+Output :
+Enter a number:
+5
+factorial of a number is 120
+
+
+04.) primenumber
+
+import 'dart:io';
+
+void main(){
+  int n;
+  print("Enter the number:");
+  n= int.parse(stdin.readLineSync()!);
+  if (prime (n) == 0)
+  print("The number is prime:");
+  else 
+  print("The number is not prime:");
+}
+int prime (int n){
+  int i;
+  for(i =2; i<n; i++){
+    if(n%i==0)
+    return 1;
+  }
+  return 0;
+}
+
+Output :
+
+Enter the number:
+8
+The number is not prime
+
+Enter the number:
+3
+The number is prime
+
+
+
+Practical No. 02 (Hello world flutter)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+@override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("My Mobile Application"),         
+        ),
+        body: const Center(
+          child: Text(
+            "Hello World",
+            style: TextStyle(
+              color: Colors.redAccent,
+              backgroundColor: Colors.blueGrey,
+              fontFamily: "Arial",
+              fontSize: 32),
+            ),
+          ),
+        ),
+      );
+   }
+ }
+
+
+
+Practical No. 03 (Image and Button)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+@override
+Widget build (BuildContext context) {
+  return MaterialApp(
+    home: Scaffold(
+      appBar: AppBar(
+        title: const Text("image and button")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset("assets/Onepiece.jpg",height: 100,width: 100,),
+            Image.asset("assets/Arjun.jpeg",height: 100,width: 100,),
+            ElevatedButton(
+              onPressed:() {
+                print("Hello World");
+              },
+              child: const Text ("Click"),
+            ),
+            ],
+          ),
+        ),
+       ),
+     );
+   }
+} 
+
+
+
+Practical No. 04 (Calculator)
+
+import 'package:flutter/material.dart';
+void main() {
+   runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+   @override
+Widget build(BuildContext context) {
+   return MaterialApp(
+     home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+   @override
+   State<MyHomePage> createState() => _MyHomePageState();
+  }
+
+class _MyHomePageState extends State<MyHomePage> {
+   TextEditingController t1 = TextEditingController();
+    TextEditingController t2 = TextEditingController();
+     int n1 = 0, n2 = 0, ans = 0;
+     void add() {
+       setState(() {
+         n1 = int.parse(t1.text); 
+         n2 = int.parse(t2.text);
+         ans = n1 + n2;
+       });
+      }
+
+      void div() {
+         setState(() {
+         n1 = int.parse(t1.text);
+         n2 = int.parse(t2.text); 
+         ans = n1 ~/ n2;
+       });
+      }
+
+      void sub() {
+        setState(() {
+        n1 = int.parse(t1.text);
+        n2 = int.parse(t2.text);
+        ans = n1 - n2;
+      });
+     }
+
+       void mult() {
+         setState(() {
+        n1 = int.parse(t1.text);
+        n2 = int.parse(t2.text);
+        ans = n1 * n2;
+      });
+     }
+
+     @override
+     Widget build(BuildContext context) {
+       return Scaffold(
+         appBar: AppBar(
+           title: const Text("Calculator"),
+         ),
+         body: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 15,
+             ),
+             TextField(
+                 controller: t1,
+                 decoration: InputDecoration(
+                   labelText: "Enter the first number",
+                   border:
+                       OutlineInputBorder(borderRadius:
+ BorderRadius.circular(20)),
+                )),
+            SizedBox(
+               height: 15,
+              ),
+              TextField(
+                  controller: t2,
+                  decoration: InputDecoration(
+                    labelText: "Enter the Second number",
+                    border:
+                        OutlineInputBorder(borderRadius:
+ BorderRadius.circular(20)),
+               )),
+           Text(
+             'Result is $ans',
+             style: TextStyle(color: Colors.deepPurpleAccent, fontSize: 20),
+            ),
+            SizedBox(
+               height: 15,
+              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+               children: <Widget>[
+                 ElevatedButton( 
+                  onPressed: () {
+                    add();
+                  },
+                   child: const Text("ADD"),
+                ),
+                ElevatedButton(
+                   onPressed: () {
+                    sub();
+                  },
+                  child: const Text("SUB"),
+                ),
+                ElevatedButton(
+                   onPressed: () {
+                    div();
+                  },
+                   child: const Text("DIV"),
+                ),
+                ElevatedButton(
+                   onPressed: () {
+                     mult();
+                   },
+                   child: const Text("Mult"),
+                  ),
+                ],
+              )
+            ],
+          ),
+        );
+      }
+   }
+
+
+
+Practical No. 05 (Layouts)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(home: MyApp()));
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Layouts")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Layouts",
+               style: TextStyle(backgroundColor: Colors.yellow, fontSize: 30)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(height: 100,width: 100,color: Colors.purpleAccent),
+              Container(height: 100,width: 100,color: Colors.greenAccent),
+              Container(height: 100,width: 100,color: Colors.blueGrey),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(height: 100,width: 100,color: Colors.pinkAccent),
+              Container(height: 100,width: 100,color: Colors.yellowAccent),
+              Container(height: 100,width: 100,color: Colors.blueAccent),
+            ],
+           ),
+          ],
+        )),
+      );
+    }
+  }
+
+
+
+Practical No. 06 (Navigation and routing)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: one(),
+  ));
+}
+
+class one extends StatelessWidget {
+  TextEditingController str = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("First page")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              controller: str,
+              decoration: InputDecoration(
+                labelText: "Enter your name",
+                hintText: "Enter the name",
+                border: OutlineInputBorder(
+                   borderRadius: BorderRadius.circular(20)),
+            )),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                        context,
+                       MaterialPageRoute(
+                           builder: (context) => two(name: str.text)))
+                    .whenComplete(() => {str.clear()});
+              },
+              child: const Text("next")),
+             ],
+           )));
+  }
+} 
+
+class two extends StatelessWidget {
+  String? name;
+  two({required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Second page")),
+      body: Center(
+         child: Column(
+       mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Hello, $name",
+            style: TextStyle(fontSize: 30, color: Colors.purpleAccent)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("previous"),
+              ),
+            ],
+        )));
+     }
+  }
+
+
+
+Practical No. 07 (Checkbox)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: MyHomePage(),
+  ));
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  bool first = false;
+  bool second = false;
+  bool third = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Checkbox demo"),
+        ),
+        body: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                (const Text("Red", style: TextStyle(fontSize: 30))),
+                Checkbox(
+                    activeColor: Colors.red,
+                    checkColor: Colors.white,
+                    value: first,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        first = value!;
+                      });
+                    })
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                (const Text("Blue", style: TextStyle(fontSize: 30))),
+                Checkbox(
+                    activeColor: Colors.blueAccent,
+                    checkColor: Colors.white,
+                    value: second,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        second = value!;
+                      });
+                    })
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                (const Text("Green", style: TextStyle(fontSize: 30))),
+                Checkbox(
+                    activeColor: Colors.greenAccent,
+                    checkColor: Colors.white,
+                    value: third,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        third = value!;
+                      });
+                    })
+              ],
+            ),
+          ]),
+        ));
+  }
+}
+
+
+
+Practical No. 08 (Themes)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(home: MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+            title: const Text("Style and Theme",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    backgroundColor: Colors.pinkAccent))),
+        backgroundColor: Colors.limeAccent,
+        body: Center(
+            child: Image.network(
+                height: 300,
+                width: 300,
+                'https://cdn-images-1.medium.com/fit/t/1600/480/1*AmI9wRbXrfIWGESx6eEiTw.gif'
+                )));
+  }
+}
+
+
+
+Practical No. 09 (Guesture)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(home: MyApp()));}
+  class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(title: const Text("Guesture demo")),
+        body: Center(
+          child: GestureDetector(
+            child: const Text("Event handling",
+            style: TextStyle(fontSize: 30, color: Colors.redAccent)),
+            onTap: () {
+              print("Button tapped");
+            },
+            onDoubleTap: () {
+              print("Button double tapped");
+              },
+              onLongPress: () {
+                print("Button Long press");
+                },
+                onHorizontalDragStart: (DragStartDetails){
+                  print("Horizontal drag started");
+                },                    
+            )
+          )
+        );
+    }
+  }
+
+
+
+Practical No. 10 (Animation)
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: MyHomePage());
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation sizeAnimation;
+  late Animation colorAnimation;
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 3000));
+    sizeAnimation = Tween<double>(begin: 10.0, end: 300).animate(controller);
+    colorAnimation =
+        ColorTween(begin: Colors.red, end: Colors.blue).animate(controller);
+    sizeAnimation.addListener(() {
+      setState(() {});
+    });
+    sizeAnimation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        controller.reverse();
+      }
+      if (status == AnimationStatus.dismissed) {
+        controller.forward();
+      }
+    });
+    controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Animation")),
+      body: Center(
+        child: Container(
+            height: sizeAnimation.value,
+            width: sizeAnimation.value,
+            color: colorAnimation.value),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+}
+
+1.area of circle aap iske saare program karlo sqaure,rectangle,triangle,cylinder
+import 'dart:io';
+
+class A {
+  late int n;
+  void accept() {
+    print("enter any number");
+    n = int.parse(stdin.readLineSync()!);
+  }
+}
+
+class Area extends A {
+  void radius(int r) {
+    const pi = 3.14;
+    double area = r * r * pi;
+    print("$n");
+    print("$area");
+  }
+}
+
+void main() {
+  Area a = Area();
+  a.accept();
+  a.radius(a.n);
+}
+
+2.binary to decimal
+import 'dart:math';
+import 'dart:io';
+
+int binaryToDecimal(String binary) {
+  int decimal = 0;
+  for (int i = 0; i < binary.length; i++) {
+    int digit = int.parse(binary[binary.length - 1 - i]);
+    decimal += digit * pow(2, i).toInt();
+  }
+  return decimal;
+}
+
+void main() {
+  print('Enter a binary number:');
+  String binary = stdin.readLineSync()!;
+  print('Decimal representation of $binary is ${binaryToDecimal(binary)}');
+}
+
+
+3.decimaltobinary
+import 'dart:io';
+
+String decimalToBinary(int decimal) {
+  if (decimal == 0) {
+    return '0';
+  }
+
+  String binary = '';
+  while (decimal > 0) {
+    binary = (decimal % 2).toString() + binary;
+    decimal = decimal ~/ 2;
+  }
+
+  return binary;
+}
+
+void main() {
+  print('Enter a decimal number:');
+  int decimal = int.parse(stdin.readLineSync()!);
+  print('Binary representation of $decimal is ${decimalToBinary(decimal)}');
+}
+
+4.calculatetemperature
+import 'dart:io';
+
+void main() {
+  print("\tchoose an option\n");
+  print("choose |a| to fahrenhiet to celcius\n");
+  print("choose |b| to celcius to fahrenhiet\n");
+  print("choose |c| to kelvin to celcius\n");
+  print("choose |d| to celcius to  kelvin\n");
+  stdout.write("enter your choice:-");
+  late String choice = stdin.readLineSync()!;
+  switch (choice) {
+    case 'a':
+      fahrenhietTocelcius();
+      break;
+    case 'b':
+      celciusTofahrenhiet();
+      break;
+    case 'c':
+      kelvinTocelcius();
+      break;
+    case 'd':
+      celciusTokelvin();
+      break;
+    default:
+      print("invalid choice. please choose correct option");
+  }
+}
+
+void fahrenhietTocelcius() {
+  stdout.write("enter temprature in fahrenhiet");
+  double fahrenhiet = double.parse(stdin.readLineSync()!);
+  double celcius = (fahrenhiet - 32) * 5 / 9;
+  print("$fahrenhiet degree fahrenhiet is equal to $celcius degree celsius");
+}
+
+void celciusTofahrenhiet() {
+  stdout.write("enter temprature in celcius");
+  double celcius = double.parse(stdin.readLineSync()!);
+  double fahrenhiet = (celcius * 9 / 5) + 32;
+  print("$celcius degree celcius is equal to $fahrenhiet degree fahrenhiet");
+}
+
+void kelvinTocelcius() {
+  stdout.write("enter temprature in kelvin");
+  double kelvin = double.parse(stdin.readLineSync()!);
+  double celcius = kelvin - 273.15;
+  print("$kelvin degree kelvin is equal to $celcius degree celsius");
+}
+
+void celciusTokelvin() {
+  stdout.write("enter temprature in kelvin");
+  double celcius = double.parse(stdin.readLineSync()!);
+  double kelvin = celcius + 273.15;
+  print("$celcius degree celcius is equal to $kelvin degree kelvin");
+}
+
+5.classandbject
+import 'dart:io';
+
+class STUDENT1 {
+  late int roll;
+  late String name;
+  void accept() {
+    print("enter the roll number");
+    roll = int.parse(stdin.readLineSync()!);
+    print("enter the the name");
+    name = stdin.readLineSync()!;
+  }
+}
+
+class STUDENT extends STUDENT1 {
+  void disp() {
+    print("my name is $name and my roll number is $roll ");
+  }
+}
+
+void main() {
+  STUDENT s = STUDENT();
+  s.accept();
+  s.disp();
+}
+
+6.switchcaseusingdaysprogram
+import 'dart:io';
+
+void main() {
+  int ch;
+  print("enter the day name ");
+  ch = int.parse(stdin.readLineSync()!);
+  switch (ch) {
+    case 1:
+      print("monday is best day");
+      break;
+    case 2:
+      print("tuesday is best day");
+      break;
+    case 3:
+      print("wednesday is best day");
+      break;
+    case 4:
+      print("thuesday is best day");
+      break;
+    case 5:
+      print("friday is best day");
+      break;
+    case 6:
+      print("saturday is best day");
+      break;
+    case 7:
+      print("sunday is best day");
+      break;
+    default:
+      print("invalid no. ");
+  }
+}
+
+7.evenandodd
+import 'dart:io';
+
+void main() {
+  int n;
+  print("enter the number ");
+  n = int.parse(stdin.readLineSync()!);
+  if (n % 2 == 0) {
+    print("the $n is even");
+  } else {
+    print("the $n is odd");
+  }
+}
+
+8.factorial
+import 'dart:io';
+
+void main() {
+  int a;
+  print("enter a number:");
+  a = int.parse(stdin.readLineSync()!);
+  int result = fact(a);
+  print("$result");
+}
+
+int fact(int n) {
+  if (n == 0) {
+    return 1;
+  } else {
+    return n * fact(n - 1);
+  }
+}
+
+9.fibonacci
+import 'dart:io';
+
+void main() {
+  int n1 = 0;
+  int n2 = 1;
+  int n3;
+  print("enter the number which you want tio fibonaki seres");
+  int? n = int.parse(stdin.readLineSync()!);
+  print("the febonaki series is \n");
+  print("$n1");
+  print("$n2");
+  for (int i = 2; i < n; i++) {
+    n3 = n1 + n2;
+    print("$n3");
+    n1 = n2;
+    n2 = n3;
+  }
+}
+
+10.gram,second,cente meter convertor
+import 'dart:io';
+
+void main() {
+  double cm, gram, sec;
+  print("enter cente meter:");
+  cm = double.parse(stdin.readLineSync()!);
+  print("enter cente meter:");
+  gram = double.parse(stdin.readLineSync()!);
+  print("enter cente meter:");
+  sec = double.parse(stdin.readLineSync()!);
+  double meter = cm / 100;
+  double kilogram = gram / 1000;
+  double minute = sec / 60;
+  print("$cm  meter converted in meter $meter");
+  print("$gram gram is converted in kilogram $kilogram");
+  print("$sec second is converted in minute $minute");
+}
+
+11.greatest among three number
+import 'dart:io';
+
+void main() {
+  int a, b, c;
+  print("enter the number");
+  a = int.parse(stdin.readLineSync()!);
+  b = int.parse(stdin.readLineSync()!);
+  c = int.parse(stdin.readLineSync()!);
+  if (a > b) {
+    print("$a is greater");
+  } else if (b > c) {
+    print("$b is greater");
+  } else if (c > a) {
+    print("$c is greater");
+  }
+  if (a < b) {
+    print("$a is smaller");
+  } else if (b < c) {
+    print("$b is smaller");
+  } else if (c < a) {
+    print("$c is samller");
+  }
+  if (a == b || b == c || a == c) {
+    print(" $a  is the number is same  ");
+  } else if (b == c) {
+    print(" $c  is the number is same  ");
+  }
+}
+
+12.table
+import 'dart:io';
+
+void main() {
+  int number;
+  print("which table you want just entered it");
+  number = int.parse(stdin.readLineSync()!);
+  for (int i = 1; i <= 10; i++) print("$number x $i=${number * i}");
+}
+
+13.palendoriam
+import 'dart:io';
+
+void main() {
+  int reminder, sum = 0, temp, number;
+  print("enter a number");
+  number = int.parse(stdin.readLineSync()!);
+  temp = number;
+  while (number > 0) {
+    reminder = number % 10; //get remainder
+    sum = (sum * 10) + reminder;
+    number = number ~/ 10;
+  }
+  if (sum == temp) {
+    print('Its A Palindrome number');
+  } else {
+    print('Its A Not Palindrome number');
+  }
+}
+
+14.prime
+import'dart:io';
+bool isprime(n){
+  for(var i=2;i<n/i;++i){
+    if(n % i == 0){
+      return false;
+  }
+  }
+  return true;
+}
+void main(){ 
+  print("enter a number");
+ var n=int.parse(stdin.readLineSync()!);
+  if(isprime(n)){
+    print("$n is prime");
+  }
+  else{
+    print("$n is not prime");
+  }
+}
+
+15.reverse
+import 'dart:io';
+
+void main() {
+  print("Enter a three-digit number:");
+  late int number = int.parse(stdin.readLineSync()!);
+
+  // Extract digits
+  late int digit1 = number % 10;
+  late int digit2 = (number ~/ 10) % 10;
+  late int digit3 = number ~/ 100;
+
+  // Reversed number
+  late int reversedNumber = digit1 * 100 + digit2 * 10 + digit3;
+
+  print("Reversed number: $reversedNumber");
+}
+
+16.singleinheritance
+import 'dart:io';
+
+class A {
+  late int a;
+  late int b;
+  void accept() {
+    print("enter the number");
+    a = int.parse(stdin.readLineSync()!);
+    print("enter the number");
+    b = int.parse(stdin.readLineSync()!);
+  }
+}
+
+class B extends A {
+  void add() {
+    int c = a + b;
+    print("addition of two number:$c");
+  }
+}
+
+void main() {
+  B b = B();
+  b.accept();
+  b.add();
+}
+
+17.calculator
+import 'dart:io';
+
+void main() {
+  print("enter the number");
+  int? n1 = int.parse(stdin.readLineSync()!);
+  print("enter the number");
+  int? n2 = int.parse(stdin.readLineSync()!);
+  print(
+      "enter your choice\n1:-addition\n2:-substraction\n3:-multiplication\n4:-division");
+  String? ch = stdin.readLineSync()!;
+  switch (ch) {
+    case '1':
+      print("the addtion of $n1 and $n2 is:-${n1 + n2}");
+      break;
+    case '2':
+      print("the substraction of $n1 and $n2 is:-${n1 - n2}");
+      break;
+    case '3':
+      print("the multiplication of $n1 and $n2 is:-${n1 * n2}");
+      break;
+    case '4':
+      print("the divition of $n1 and $n2 is:-${n1 / n2}");
+      break;
+    default:
+      print("invalid choice");
+      break;
+  }
+}
+
+18.sumofeven
+import 'dart:io';
+
+void main() {
+  int limit;
+  print("enter the number");
+  limit = int.parse(stdin.readLineSync()!);
+  int sum = 0;
+  for (int i = 0; i <= limit; i++) {
+    if (i % 2 == 0) {
+      sum += i;
+      print("sum of even number $sum");
+    }
+  }
+  //print("sum of odd number $sum");
+}
+
+19.sumofintegernumber
+import 'dart:io';
+
+void main() {
+  int n;
+  int sum = 0;
+  print("entwer the number ");
+  n = int.parse(stdin.readLineSync()!);
+  int i = 0;
+  while (i <= n) {
+    sum += i;
+    i++;
+  }
+  print(sum);
+}
+
+20.vowel
+import 'dart:io';
+
+void main() {
+  String ch;
+  print("enter a vowel");
+  ch = stdin.readLineSync()!;
+  switch (ch) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+    case 'A':
+    case 'E':
+    case 'I':
+    case 'O':
+    case 'U':
+      print("it is vowel");
+      break;
+    default:
+      print("invalid choice");
+      break;
+  }
+}
