@@ -1,0 +1,14 @@
+import java.util.Scanner;
+public class CubeRootCalculator {
+    public static double cubeRoot(double number) {
+        return Math.cbrt(number); 
+    }
+     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to find its cube root: ");
+        double number = scanner.nextDouble();
+        double result = cubeRoot(number);
+        System.out.println("The cube root of " + number + " is: " + result);
+        scanner.close();
+    }
+}
