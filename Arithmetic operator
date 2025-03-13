@@ -1,0 +1,25 @@
+package javapract;
+import java.util.*;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author SAHU
+ */
+public class JAVAPRACT {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner sc=new Scanner(System.in);
+        int x,y;
+        System.out.println("Enter 2 number");
+        x=sc.nextInt();
+        y=sc.nextInt();
+        System.out.println("The addition of 2 number :"+(x+y));
+    }
+    
+}
