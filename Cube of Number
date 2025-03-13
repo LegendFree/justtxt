@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class CubeCalculator {
+    public static int calculateCube(int number) {
+        return number * number * number; // Formula to calculate the cube
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to find its cube: ");
+        int number = scanner.nextInt();
+        int cube = calculateCube(number);
+        System.out.println("The cube of " + number + " is: " + cube);
+        scanner.close();
+    }
+}
+ // cube of number
+
+import java.util.Scanner;
+public class CubeOfNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to find its cube: ");
+        int number = scanner.nextInt();
+        int cube = number * number * number;
+        System.out.println("The cube of " + number + " is: " + cube);
+        scanner.close();
+    }
+}
